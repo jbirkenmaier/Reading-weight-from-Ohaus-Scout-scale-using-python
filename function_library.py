@@ -1,9 +1,8 @@
 import serial.tools.list_ports
 import time
-
-ser  = serial.Serial(serial_port_scale, baudrate=baud, timeout = 1)
-
-def readdata(): #reads data from ohaus scale
+    
+def read_data_from_scale(serial_port_scale, baud=9600): #reads data from ohaus scale
+    ser = serial.Serial(serial_port_scale, baudrate=baud, timeout = 1)
     ser.write('P\n\r'.encode('UTF-8'))
     s = ser.read(106) #just use readline here? 
     rawData=s.decode('utf-8') 
